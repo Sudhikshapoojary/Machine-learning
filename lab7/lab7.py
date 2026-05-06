@@ -6,6 +6,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import PolynomialFeatures, StandardScaler
 from sklearn.pipeline import make_pipeline
 from sklearn.metrics import mean_squared_error, r2_score
+
 def linear_regression_boston():
     url="https://raw.githubusercontent.com/selva86/datasets/master/BostonHousing.csv"
     df = pd.read_csv(url)
@@ -16,6 +17,7 @@ def linear_regression_boston():
     model = LinearRegression()
     model.fit(X_train, y_train)
     y_pred = model.predict(X_test)
+    
     plt.scatter(X_test, y_test, color="blue", label="Actual")
     plt.plot(X_test, y_pred, color="red", label="Predicted")
     plt.xlabel("Average number of rooms (RM)")
@@ -23,9 +25,11 @@ def linear_regression_boston():
     plt.title("Linear Regression - Boston Housing Dataset")
     plt.legend()
     plt.show()
+    
     print("Linear Regression - Boston Housing Dataset")
     print("Mean Squared Error:", mean_squared_error(y_test, y_pred))
     print("R^2 Score:", r2_score(y_test, y_pred))
+    
 def polynomial_regression_auto_mpg():
   url = "https://archive.ics.uci.edu/ml/machine-learning-databases/auto-mpg/auto-mpg.data"
   column_names = ["mpg", "cylinders", "displacement", "horsepower", "weight",
@@ -40,6 +44,7 @@ def polynomial_regression_auto_mpg():
   LinearRegression())
   poly_model.fit(X_train, y_train)
   y_pred = poly_model.predict(X_test)
+    
   plt.scatter(X_test, y_test, color="blue", label="Actual")
   plt.scatter(X_test, y_pred, color="red", label="Predicted")
   plt.xlabel("Displacement")
@@ -47,9 +52,11 @@ def polynomial_regression_auto_mpg():
   plt.title("Polynomial Regression - Auto MPG Dataset")
   plt.legend()
   plt.show()
+    
   print("Polynomial Regression - Auto MPG Dataset")
   print("Mean Squared Error:", mean_squared_error(y_test, y_pred))
   print("R^2 Score:", r2_score(y_test, y_pred))
+    
 if __name__ == "__main__":
  print("Demonstrating Linear Regression and Polynomial Regression\n")
 linear_regression_boston()
